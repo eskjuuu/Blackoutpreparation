@@ -1,0 +1,14 @@
+{%- capture mkey -%}{% render 'model-key', product: product %}{%- endcapture -%}
+{%- assign mkey = mkey | strip -%}
+<a class="plate card" href="{{ product.url }}">
+  <div class="card__img">
+    {%- if product.featured_media -%}
+      {{ product.featured_media | image_url: width: 800 | image_tag: loading: 'lazy', sizes: '(min-width: 900px) 33vw, 100vw', widths: '400, 600, 800', alt: product.title }}
+    {%- elsif mkey == 'backpack' -%}<img src="{{ 'backpack-thumb.jpg' | asset_url }}" alt="{{ product.title | escape }}" loading="lazy" width="480" height="360">
+    {%- elsif mkey == 'pump' -%}<img src="{{ 'pump-thumb.jpg' | asset_url }}" alt="{{ product.title | escape }}" loading="lazy" width="480" height="360">
+    {%- else -%}<img src="{{ 'bundle-thumb.jpg' | asset_url }}" alt="{{ product.title | escape }}" loading="lazy" width="480" height="360">
+    {%- endif -%}
+  </div>
+  <h3>{{ product.title }}</h3>
+  <p class="price">{{ product.price | money }}</p>
+</a>

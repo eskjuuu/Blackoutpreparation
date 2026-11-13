@@ -1,0 +1,9 @@
+<article class="section"><div class="wrap" style="max-width:860px">
+  <p class="label">{{ article.published_at | date: '%d. %m. %Y' }}</p>
+  <h1 class="h2">{{ article.title }}</h1>
+  {%- if article.image -%}<div style="margin-top:1.5rem">{{ article.image | image_url: width: 1600 | image_tag: alt: article.title }}</div>{%- endif -%}
+  <div class="rte" style="margin-top:1.5rem">{{ article.content }}</div>
+</div></article>
+{% schema %}
+{ "name": "Článek" }
+{% endschema %}

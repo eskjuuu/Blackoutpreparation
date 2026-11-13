@@ -1,0 +1,171 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {},
+      "blocks": {
+        "f1": {
+          "type": "fact",
+          "settings": {
+            "value": "72 h",
+            "text": "tolik doporučují krizoví odborníci zvládnout bez pomoci zvenčí"
+          }
+        },
+        "f2": {
+          "type": "fact",
+          "settings": {
+            "value": "2× D",
+            "text": "baterie pumpě stačí, zásuvku nepotřebuje"
+          }
+        },
+        "f3": {
+          "type": "fact",
+          "settings": {
+            "value": "2×",
+            "text": "větší prostor v batohu po rozepnutí bočnice"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3"
+      ]
+    },
+    "ticker": {
+      "type": "ticker",
+      "settings": {}
+    },
+    "scen": {
+      "type": "scenarios",
+      "settings": {},
+      "blocks": {
+        "a": {
+          "type": "card",
+          "settings": {
+            "code": "Scénář A / Blackout",
+            "title": "Pumpy bez proudu nečerpají",
+            "text": "Palivo v kanystru je v tu chvíli jediné, co máš. Pumpa ho dostane do auta, agregátu nebo kamen bez nasávání pusou a bez rozlití."
+          }
+        },
+        "b": {
+          "type": "card",
+          "settings": {
+            "code": "Scénář B / Evakuace",
+            "title": "Na odchod máš minuty",
+            "text": "Vyděšená kočka v náručí uteče. V pevném větraném batohu je v bezpečí a ty máš obě ruce volné na děti, doklady a zavazadla."
+          }
+        },
+        "c": {
+          "type": "card",
+          "settings": {
+            "code": "Scénář C / Dlouhá krize",
+            "title": "Rozhoduje, co máš doma",
+            "text": "Když se situace zhorší, regály se vyprázdní a dodávky se natáhnou. Vybav se teď, dokud se doručuje během pár dnů."
+          }
+        }
+      },
+      "block_order": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    "batoh": {
+      "type": "featured-product",
+      "settings": {
+        "product": "evakuacni-batoh-pro-kocku",
+        "flip": false,
+        "anchor": "vybava"
+      }
+    },
+    "pumpa": {
+      "type": "featured-product",
+      "settings": {
+        "product": "bateriova-pumpa-na-palivo-2ks",
+        "flip": true,
+        "anchor": "pumpa"
+      }
+    },
+    "rozklad": {
+      "type": "explode-3d",
+      "settings": {
+        "model": "pump",
+        "heading": "Rozlož si to.",
+        "heading_2": "Pochop, jak to funguje."
+      }
+    },
+    "balicek": {
+      "type": "bundle",
+      "settings": {
+        "product": "balicek-preziti"
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {},
+      "blocks": {
+        "q0": {
+          "type": "qa",
+          "settings": {
+            "q": "Kdy mi zboží dorazí?",
+            "a": "<p>Obvykle do 2–7 pracovních dnů. Sledovací číslo ti přijde e‑mailem.</p>"
+          }
+        },
+        "q1": {
+          "type": "qa",
+          "settings": {
+            "q": "Jsou baterie součástí pumpy?",
+            "a": "<p>Ne. Pumpa potřebuje 2 baterie typu D (velké mono články). Měj doma i náhradní sadu.</p>"
+          }
+        },
+        "q2": {
+          "type": "qa",
+          "settings": {
+            "q": "Jak velká kočka se do batohu vejde?",
+            "a": "<p>Batoh je pro kočky a malé psy, orientační nosnost je v parametrech produktu. Po rozepnutí bočnice má zvíře dvojnásobný prostor.</p>"
+          }
+        },
+        "q3": {
+          "type": "qa",
+          "settings": {
+            "q": "Dá se pumpou odčerpat palivo z nádrže auta?",
+            "a": "<p>U starších aut často ano. Většina novějších aut má v hrdle nádrže pojistku proti odčerpání. Pumpa je hlavně na přečerpávání z kanystrů, sudů a nádob.</p>"
+          }
+        },
+        "q4": {
+          "type": "qa",
+          "settings": {
+            "q": "Můžu zboží vrátit?",
+            "a": "<p>Ano. Do 14 dnů od převzetí můžeš od nákupu odstoupit bez udání důvodu.</p>"
+          }
+        },
+        "q5": {
+          "type": "qa",
+          "settings": {
+            "q": "Proč to řešit teď?",
+            "a": "<p>V klidu vybereš v klidu a zboží dorazí za pár dní. V krizi se stejné věci vyprodají a dodávky se zpozdí. Batoh navíc využiješ u veterináře a pumpu u agregátu nebo sekačky.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q0",
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5"
+      ]
+    }
+  },
+  "order": [
+    "hero",
+    "ticker",
+    "scen",
+    "batoh",
+    "pumpa",
+    "rozklad",
+    "balicek",
+    "faq"
+  ]
+}

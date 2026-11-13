@@ -1,0 +1,48 @@
+<section class="hero">
+  {%- if section.settings.image -%}
+    {{ section.settings.image | image_url: width: 2400 | image_tag: class: 'hero__bg', alt: '', loading: 'eager', fetchpriority: 'high', sizes: '100vw', widths: '800, 1200, 1800, 2400' }}
+  {%- else -%}
+    <img class="hero__bg" src="{{ 'bundle.jpg' | asset_url }}" alt="" width="1500" height="1125" fetchpriority="high">
+  {%- endif -%}
+  <div class="wrap hero__in">
+    {%- if section.settings.stamp != blank -%}<span class="stamp">{{ section.settings.stamp }}</span>{%- endif -%}
+    <p class="label">{{ section.settings.label }}</p>
+    <h1 class="h1 flicker">{{ section.settings.line_1 }}<br><em>{{ section.settings.line_2 }}</em></h1>
+    <p class="lead">{{ section.settings.text }}</p>
+    <div class="hero__cta">
+      {%- if section.settings.btn_1 != blank -%}<a class="btn btn--rust" href="{{ section.settings.btn_1_url | default: '#vybava' }}">{{ section.settings.btn_1 }} <span class="arr" aria-hidden="true">→</span></a>{%- endif -%}
+      {%- if section.settings.btn_2 != blank -%}<a class="btn btn--ghost" href="{{ section.settings.btn_2_url | default: '#balicek' }}">{{ section.settings.btn_2 }}</a>{%- endif -%}
+    </div>
+    <dl class="facts">
+      {%- for block in section.blocks -%}
+        <div {{ block.shopify_attributes }}><dt>{{ block.settings.value }}</dt><dd>{{ block.settings.text }}</dd></div>
+      {%- endfor -%}
+    </dl>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Úvodní banner",
+  "max_blocks": 3,
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Obrázek na pozadí", "info": "Bez obrázku se použije vizualizace z tématu." },
+    { "type": "text", "id": "stamp", "label": "Razítko", "default": "Zásoba č. 01" },
+    { "type": "text", "id": "label", "label": "Štítek", "default": "Výbava pro dny, kdy nic nefunguje" },
+    { "type": "text", "id": "line_1", "label": "Nadpis – řádek 1", "default": "Svět se zastaví." },
+    { "type": "text", "id": "line_2", "label": "Nadpis – řádek 2", "default": "Ty pojedeš dál." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Výpadek proudu. Evakuace. Mrtvé pumpy. Až to přijde, nebude čas nic shánět. Výbava, která funguje bez elektřiny, bez signálu a bez paniky." },
+    { "type": "text", "id": "btn_1", "label": "Tlačítko 1", "default": "Vybavit se teď" },
+    { "type": "url", "id": "btn_1_url", "label": "Odkaz tlačítka 1" },
+    { "type": "text", "id": "btn_2", "label": "Tlačítko 2", "default": "Balíček přežití" },
+    { "type": "url", "id": "btn_2_url", "label": "Odkaz tlačítka 2" }
+  ],
+  "blocks": [
+    { "type": "fact", "name": "Údaj", "settings": [
+      { "type": "text", "id": "value", "label": "Hodnota", "default": "72 h" },
+      { "type": "text", "id": "text", "label": "Popis", "default": "tolik doporučují krizoví odborníci zvládnout bez pomoci zvenčí" }
+    ] }
+  ],
+  "presets": [{ "name": "Úvodní banner", "blocks": [{ "type": "fact" }] }]
+}
+{% endschema %}

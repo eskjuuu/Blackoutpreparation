@@ -1,0 +1,14 @@
+{%- assign words = section.settings.words | split: ',' -%}
+<div class="ticker" aria-hidden="true"><div class="ticker__track">
+  {%- for i in (1..2) -%}{%- for w in words -%}<span>{{ w | strip }}</span>{%- endfor -%}{%- endfor -%}
+</div></div>
+
+{% schema %}
+{
+  "name": "Běžící páska",
+  "settings": [
+    { "type": "text", "id": "words", "label": "Hesla (oddělená čárkou)", "default": "Výpadek proudu, Evakuace, Mrtvé pumpy, 72 hodin bez pomoci, Bez zásuvky, Ruce volné" }
+  ],
+  "presets": [{ "name": "Běžící páska" }]
+}
+{% endschema %}

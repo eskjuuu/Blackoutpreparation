@@ -1,0 +1,33 @@
+<section class="section"><div class="wrap">
+  <p class="label">{{ section.settings.label }}</p>
+  <h2 class="h2">{{ section.settings.line_1 }}<br><em>{{ section.settings.line_2 }}</em></h2>
+  <div class="scen__grid">
+    {%- for block in section.blocks -%}
+      <article class="plate scen__card" {{ block.shopify_attributes }}>
+        <p class="code">{{ block.settings.code }}</p>
+        <h3 class="h3">{{ block.settings.title }}</h3>
+        <p>{{ block.settings.text }}</p>
+      </article>
+    {%- endfor -%}
+  </div>
+</div></section>
+
+{% schema %}
+{
+  "name": "Scénáře",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "label", "label": "Štítek", "default": "Situační hlášení" },
+    { "type": "text", "id": "line_1", "label": "Nadpis 1", "default": "Tři scénáře." },
+    { "type": "text", "id": "line_2", "label": "Nadpis 2", "default": "Jedna příprava." }
+  ],
+  "blocks": [
+    { "type": "card", "name": "Scénář", "settings": [
+      { "type": "text", "id": "code", "label": "Kód", "default": "Scénář A / Blackout" },
+      { "type": "text", "id": "title", "label": "Nadpis", "default": "Pumpy bez proudu nečerpají" },
+      { "type": "textarea", "id": "text", "label": "Text", "default": "Palivo v kanystru je v tu chvíli jediné, co máš. Pumpa ho dostane do auta, agregátu nebo kamen bez nasávání pusou a bez rozlití." }
+    ] }
+  ],
+  "presets": [{ "name": "Scénáře", "blocks": [{ "type": "card" }] }]
+}
+{% endschema %}

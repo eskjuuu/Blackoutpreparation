@@ -1,0 +1,119 @@
+{%- comment -%}
+  Galerie + nákupní formulář.
+  Parametry: product, full (true = detail produktu s celým popisem), flip, sid (id sekce)
+{%- endcomment -%}
+{%- capture mkey -%}{% render 'model-key', product: product %}{%- endcapture -%}
+{%- assign mkey = mkey | strip -%}
+{%- assign uid = sid | append: '-' | append: product.id -%}
+{%- assign current = product.selected_or_first_available_variant -%}
+
+<div class="prod{% if flip %} prod--flip{% endif %}">
+  <div class="prod__media" data-gallery>
+    <div class="media-main">
+      {%- assign first = true -%}
+      {%- for media in product.media -%}
+        <div data-slide="m{{ media.id }}"{% unless first %} hidden{% endunless %}>
+          {%- case media.media_type -%}
+            {%- when 'image' -%}
+              {{ media | image_url: width: 1600 | image_tag: loading: 'lazy', sizes: '(min-width: 960px) 55vw, 100vw', widths: '600, 900, 1200, 1600', alt: media.alt }}
+            {%- when 'video' -%}
+              {{ media | video_tag: controls: true, playsinline: true, muted: true }}
+            {%- when 'external_video' -%}
+              {{ media | external_video_tag }}
+            {%- when 'model' -%}
+              {{ media | model_viewer_tag: image_size: '1024x', reveal: 'interaction', toggleable: true }}
+          {%- endcase -%}
+        </div>
+        {%- assign first = false -%}
+      {%- endfor -%}
+      {%- if product.media.size == 0 and mkey != blank -%}
+        {%- if mkey == 'backpack' -%}
+          <div data-slide="a1"><img src="{{ 'backpack.jpg' | asset_url }}" alt="{{ product.title | escape }}" width="1500" height="1125" loading="lazy"></div>
+          <div data-slide="a2" hidden><img src="{{ 'backpack_open.jpg' | asset_url }}" alt="{{ product.title | escape }} s rozšířeným dílem" width="1500" height="1125" loading="lazy"></div>
+        {%- else -%}
+          <div data-slide="a1"><img src="{{ 'pump.jpg' | asset_url }}" alt="{{ product.title | escape }}" width="1500" height="1125" loading="lazy"></div>
+          <div data-slide="a2" hidden><img src="{{ 'pump_close.jpg' | asset_url }}" alt="Detail: {{ product.title | escape }}" width="1500" height="1125" loading="lazy"></div>
+        {%- endif -%}
+        {%- assign first = false -%}
+      {%- endif -%}
+      {%- if mkey != blank -%}
+        <div data-slide="explode"{% unless first %} hidden{% endunless %}>{% render 'explode-viewer', model: mkey %}</div>
+      {%- endif -%}
+    </div>
+
+    <div class="media-thumbs" role="group" aria-label="Zobrazení produktu">
+      {%- assign first = true -%}
+      {%- for media in product.media -%}
+        <button type="button" class="media-thumb" data-thumb="m{{ media.id }}" aria-pressed="{{ first }}" aria-label="Zobrazit médium {{ forloop.index }}">
+          {{ media.preview_image | image_url: width: 240 | image_tag: loading: 'lazy', alt: '' }}
+          {%- if media.media_type == 'model' -%}<span class="tag">3D</span>{%- elsif media.media_type contains 'video' -%}<span class="tag">Video</span>{%- endif -%}
+        </button>
+        {%- assign first = false -%}
+      {%- endfor -%}
+      {%- if product.media.size == 0 and mkey != blank -%}
+        {%- if mkey == 'backpack' -%}{%- assign a1 = 'backpack-thumb.jpg' -%}{%- assign a2 = 'backpack_open-thumb.jpg' -%}{%- else -%}{%- assign a1 = 'pump-thumb.jpg' -%}{%- assign a2 = 'pump_close-thumb.jpg' -%}{%- endif -%}
+        <button type="button" class="media-thumb" data-thumb="a1" aria-pressed="true" aria-label="Vizualizace 1"><img src="{{ a1 | asset_url }}" alt="" loading="lazy" width="480" height="360"></button>
+        <button type="button" class="media-thumb" data-thumb="a2" aria-pressed="false" aria-label="Vizualizace 2"><img src="{{ a2 | asset_url }}" alt="" loading="lazy" width="480" height="360"></button>
+        {%- assign first = false -%}
+      {%- endif -%}
+      {%- if mkey != blank -%}
+        <button type="button" class="media-thumb media-thumb--3d" data-thumb="explode" aria-pressed="{{ first }}"><b>3D</b><span>Rozklad a funkce</span></button>
+      {%- endif -%}
+    </div>
+
+    {%- assign models = product.media | where: 'media_type', 'model' -%}
+    {%- if models.size > 0 -%}
+      <button class="xr-btn" type="button" data-shopify-xr data-shopify-model3d-id="{{ models.first.id }}" data-shopify-title="{{ product.title | escape }}" data-shopify-xr-hidden>Zobrazit u sebe v AR</button>
+      <script>
+        window.ShopifyXR = window.ShopifyXR || function () { (ShopifyXR.q = ShopifyXR.q || []).push(arguments); };
+        ShopifyXR('addModels', {{ models | json }});
+      </script>
+    {%- endif -%}
+  </div>
+
+  <div class="prod__info">
+    <p class="label">{{ product.type | default: 'Výbava' }}</p>
+    {%- if full -%}<h1 class="h2">{{ product.title }}</h1>{%- else -%}<h2 class="h2"><a href="{{ product.url }}" style="text-decoration:none">{{ product.title }}</a></h2>{%- endif -%}
+
+    <p class="price" id="price-{{ uid }}">
+      <span>{{ current.price | money }}</span>
+      {%- if current.compare_at_price > current.price -%}<s>{{ current.compare_at_price | money }}</s>{%- endif -%}
+    </p>
+
+    {%- form 'product', product, class: 'buy' -%}
+      <script type="application/json" data-variants>
+        [{%- for v in product.variants -%}{"id": {{ v.id }}, "available": {{ v.available }}, "price_formatted": {{ v.price | money | json }}}{% unless forloop.last %},{% endunless %}{%- endfor -%}]
+      </script>
+      <div class="buy__row">
+        {%- if product.has_only_default_variant -%}
+          <input type="hidden" name="id" value="{{ current.id }}">
+        {%- else -%}
+          <div class="field" style="flex:1 1 200px">
+            <label for="v-{{ uid }}">Varianta</label>
+            <select id="v-{{ uid }}" name="id" data-variant-select data-price-target="#price-{{ uid }} span">
+              {%- for v in product.variants -%}<option value="{{ v.id }}"{% if v == current %} selected{% endif %}{% unless v.available %} disabled{% endunless %}>{{ v.title }}</option>{%- endfor -%}
+            </select>
+          </div>
+        {%- endif -%}
+        <div class="field">
+          <label for="q-{{ uid }}">Kusů</label>
+          <input class="qty" id="q-{{ uid }}" type="number" name="quantity" value="1" min="1" inputmode="numeric">
+        </div>
+      </div>
+      <button class="btn btn--rust btn--wide" type="submit"{% unless current.available %} disabled{% endunless %}>
+        <span data-label>{% if current.available %}Přidat do výbavy{% else %}Vyprodáno{% endif %}</span> <span class="arr" aria-hidden="true">→</span>
+      </button>
+    {%- endform -%}
+
+    {%- if full -%}
+      <div class="rte">{{ product.description }}</div>
+    {%- else -%}
+      <p class="lead">{{ product.description | strip_html | truncatewords: 40 }}</p>
+      <a class="btn btn--ghost" href="{{ product.url }}">Celý popis a parametry</a>
+    {%- endif -%}
+
+    {%- if mkey == 'pump' -%}
+      <p class="warn"><b>Bezpečnost:</b> přečerpávej venku, mimo oheň a jiskření. Novější auta mají v hrdle nádrže pojistku proti odčerpání. Pumpa je hlavně na kanystry a sudy.</p>
+    {%- endif -%}
+  </div>
+</div>

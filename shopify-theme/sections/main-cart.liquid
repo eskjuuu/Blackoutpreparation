@@ -1,0 +1,63 @@
+<section class="section"><div class="wrap">
+  <p class="label">Inventura</p>
+  <h1 class="h2">Tvoje výbava</h1>
+
+  {%- if cart.item_count == 0 -%}
+    <div class="empty">
+      <p class="lead">Výbava je zatím prázdná. Až zhasne světlo, bude pozdě.</p>
+      <a class="btn btn--rust" href="{{ routes.all_products_collection_url }}">Doplnit výbavu <span class="arr" aria-hidden="true">→</span></a>
+    </div>
+  {%- else -%}
+    <form action="{{ routes.cart_url }}" method="post" id="cart">
+      <table class="cart-table">
+        <thead><tr><th>Položka</th><th>Kusů</th><th>Celkem</th></tr></thead>
+        <tbody>
+          {%- for item in cart.items -%}
+            <tr>
+              <td><div class="cart-item">
+                {%- if item.image -%}{{ item.image | image_url: width: 200 | image_tag: alt: item.title }}{%- endif -%}
+                <div>
+                  <a href="{{ item.url }}">{{ item.product.title }}</a>
+                  {%- unless item.product.has_only_default_variant -%}<p class="small">{{ item.variant.title }}</p>{%- endunless -%}
+                  <p class="small">{{ item.final_price | money }} / ks · <a href="{{ item.url_to_remove }}">Odebrat</a></p>
+                </div>
+              </div></td>
+              <td><label class="skip" for="u-{{ item.key }}">Počet kusů</label><input class="qty field-input" id="u-{{ item.key }}" type="number" name="updates[]" value="{{ item.quantity }}" min="0" style="background:var(--soot);color:var(--bone);border:2px solid var(--seam);min-height:48px;padding:0 .6rem"></td>
+              <td><b>{{ item.final_line_price | money }}</b></td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+      </table>
+
+      <div class="cart-sum">
+        {%- assign free = section.settings.free_from | times: 100 -%}
+        {%- if free > 0 -%}
+          <div class="ship-bar">
+            {%- if cart.total_price >= free -%}
+              <p class="small">Doprava zdarma odemčena.</p>
+            {%- else -%}
+              <p class="small">Do dopravy zdarma zbývá {{ free | minus: cart.total_price | money }}.</p>
+            {%- endif -%}
+            {%- assign pct = cart.total_price | times: 100 | divided_by: free | at_most: 100 -%}
+            <div class="ship-bar__track"><div class="ship-bar__fill" style="width: {{ pct }}%"></div></div>
+          </div>
+        {%- endif -%}
+        <p class="price">{{ cart.total_price | money }}</p>
+        <p class="small">Doprava a daně se dopočítají v pokladně.</p>
+        <div class="hero__cta">
+          <button class="btn btn--ghost" type="submit" name="update">Přepočítat</button>
+          <button class="btn btn--rust" type="submit" name="checkout">K pokladně <span class="arr" aria-hidden="true">→</span></button>
+        </div>
+      </div>
+    </form>
+  {%- endif -%}
+</div></section>
+
+{% schema %}
+{
+  "name": "Košík",
+  "settings": [
+    { "type": "number", "id": "free_from", "label": "Doprava zdarma od (Kč)", "default": 1500, "info": "Jen ukazatel. Skutečnou cenu dopravy nastavíš v Nastavení → Doprava." }
+  ]
+}
+{% endschema %}

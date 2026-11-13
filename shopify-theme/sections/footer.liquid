@@ -1,0 +1,21 @@
+<footer class="foot"><div class="wrap foot__in">
+  <p class="logo">{% render 'logo-mark' %}{{ shop.name }}</p>
+  {%- if section.settings.menu.links.size > 0 -%}
+    <nav class="foot__links" aria-label="Informace">
+      {%- for link in section.settings.menu.links -%}<a href="{{ link.url }}">{{ link.title }}</a>{%- endfor -%}
+    </nav>
+  {%- endif -%}
+  {%- if section.settings.company != blank -%}<p class="small">{{ section.settings.company }}</p>{%- endif -%}
+  <p class="small">© {{ 'now' | date: '%Y' }} {{ shop.name }}. {{ section.settings.note }}</p>
+</div></footer>
+
+{% schema %}
+{
+  "name": "Patička",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Menu v patičce", "default": "footer" },
+    { "type": "text", "id": "company", "label": "Provozovatel (jméno, IČO, adresa, e‑mail)", "info": "Zákon vyžaduje tyto údaje na webu." },
+    { "type": "text", "id": "note", "label": "Poznámka", "default": "3D modely a vizualizace jsou ilustrační, provedení se může mírně lišit." }
+  ]
+}
+{% endschema %}

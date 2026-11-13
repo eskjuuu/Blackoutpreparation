@@ -1,0 +1,17 @@
+<section class="section"><div class="wrap">
+  <h1 class="h2">Hledat</h1>
+  <form action="{{ routes.search_url }}" method="get" class="buy__row" role="search" style="margin-top:1.5rem">
+    <div class="field" style="flex:1 1 260px"><label for="q">Hledaný výraz</label><input id="q" type="search" name="q" value="{{ search.terms | escape }}"></div>
+    <button class="btn btn--rust" type="submit" style="align-self:end">Hledat</button>
+  </form>
+  {%- if search.performed -%}
+    <div class="grid">
+      {%- for item in search.results -%}
+        {%- if item.object_type == 'product' -%}{% render 'product-card', product: item %}{%- else -%}<a class="plate card" href="{{ item.url }}"><h3>{{ item.title }}</h3></a>{%- endif -%}
+      {%- else -%}<p class="lead">Nic jsme nenašli.</p>{%- endfor -%}
+    </div>
+  {%- endif -%}
+</div></section>
+{% schema %}
+{ "name": "Vyhledávání" }
+{% endschema %}

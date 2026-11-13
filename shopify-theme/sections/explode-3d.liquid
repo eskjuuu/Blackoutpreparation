@@ -1,0 +1,21 @@
+<section class="section explode-sec"><div class="wrap">
+  <p class="label">{{ section.settings.label }}</p>
+  <h2 class="h2">{{ section.settings.heading }}<br><em>{{ section.settings.heading_2 }}</em></h2>
+  {% render 'explode-viewer', model: section.settings.model %}
+</div></section>
+
+{% schema %}
+{
+  "name": "Rozložený 3D pohled",
+  "settings": [
+    { "type": "select", "id": "model", "label": "Model", "options": [
+      { "value": "backpack", "label": "Batoh pro kočku" },
+      { "value": "pump", "label": "Pumpa na palivo" }
+    ], "default": "backpack" },
+    { "type": "text", "id": "label", "label": "Štítek", "default": "Technický rozbor" },
+    { "type": "text", "id": "heading", "label": "Nadpis", "default": "Rozlož si to." },
+    { "type": "text", "id": "heading_2", "label": "Nadpis 2", "default": "Pochop, jak to funguje." }
+  ],
+  "presets": [{ "name": "Rozložený 3D pohled" }]
+}
+{% endschema %}

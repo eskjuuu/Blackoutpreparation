@@ -1,0 +1,22 @@
+<section class="section"><div class="wrap">
+  {% render 'product-block', product: product, full: true, flip: false, sid: section.id %}
+</div></section>
+
+{%- capture mkey -%}{% render 'model-key', product: product %}{%- endcapture -%}
+{%- assign mkey = mkey | strip -%}
+{%- if mkey != blank and section.settings.show_explode -%}
+<section class="section explode-sec"><div class="wrap">
+  <p class="label">Technický rozbor</p>
+  <h2 class="h2">Rozlož si to.<br><em>Pochop, jak to funguje.</em></h2>
+  {% render 'explode-viewer', model: mkey %}
+</div></section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Detail produktu",
+  "settings": [
+    { "type": "checkbox", "id": "show_explode", "label": "Zobrazit velký rozložený 3D pohled pod produktem", "default": true, "info": "Funguje pro produkty se štítkem 3d-batoh nebo 3d-pumpa." }
+  ]
+}
+{% endschema %}

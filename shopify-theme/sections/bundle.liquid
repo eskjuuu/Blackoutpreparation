@@ -1,0 +1,42 @@
+{%- assign product = section.settings.product -%}
+<section class="section" id="balicek"><div class="wrap bundle">
+  {%- if section.settings.image -%}
+    {{ section.settings.image | image_url: width: 2000 | image_tag: class: 'bundle__img', loading: 'lazy', alt: section.settings.heading }}
+  {%- else -%}
+    <img class="bundle__img" src="{{ 'bundle.jpg' | asset_url }}" alt="Batoh pro kočku a pumpa na kanystru" width="1500" height="1125" loading="lazy">
+  {%- endif -%}
+  <div class="bundle__text">
+    <p class="label">{{ section.settings.label }}</p>
+    <h2 class="h2">{{ section.settings.heading }}<br><em>{{ section.settings.heading_2 }}</em></h2>
+    <div class="lead">{{ section.settings.text }}</div>
+  </div>
+  <div class="plate bundle__buy">
+    {%- if product == blank -%}
+      <div class="setup-note">Vytvoř produkt „Balíček“ a vyber ho v nastavení sekce.</div>
+    {%- else -%}
+      {%- assign v = product.selected_or_first_available_variant -%}
+      <p class="price">{{ v.price | money }}</p>
+      {%- form 'product', product -%}
+        <input type="hidden" name="id" value="{{ v.id }}">
+        <button class="btn btn--rust btn--wide" type="submit"{% unless v.available %} disabled{% endunless %}>Naložit balíček <span class="arr" aria-hidden="true">→</span></button>
+      {%- endform -%}
+      <p class="small">{{ section.settings.note }}</p>
+    {%- endif -%}
+  </div>
+</div></section>
+
+{% schema %}
+{
+  "name": "Balíček",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Produkt balíčku" },
+    { "type": "image_picker", "id": "image", "label": "Obrázek" },
+    { "type": "text", "id": "label", "label": "Štítek", "default": "Ušetříš 190 Kč" },
+    { "type": "text", "id": "heading", "label": "Nadpis", "default": "Balíček přežití" },
+    { "type": "text", "id": "heading_2", "label": "Nadpis 2", "default": "Kočka i palivo." },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Evakuační batoh pro kočku a dvě bateriové pumpy na palivo. Samostatně 1 980 Kč.</p>" },
+    { "type": "text", "id": "note", "label": "Poznámka pod tlačítkem", "default": "Doprava zdarma. Platba kartou, Apple Pay nebo Google Pay." }
+  ],
+  "presets": [{ "name": "Balíček" }]
+}
+{% endschema %}

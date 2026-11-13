@@ -1,0 +1,14 @@
+<section class="section"><div class="wrap">
+  <h1 class="h2">Kolekce</h1>
+  <div class="grid">
+    {%- for collection in collections -%}
+      <a class="plate card" href="{{ collection.url }}">
+        <div class="card__img">{%- if collection.featured_image -%}{{ collection.featured_image | image_url: width: 800 | image_tag: loading: 'lazy', alt: collection.title }}{%- else -%}<img src="{{ 'bundle-thumb.jpg' | asset_url }}" alt="" loading="lazy" width="480" height="360">{%- endif -%}</div>
+        <h3>{{ collection.title }}</h3>
+      </a>
+    {%- endfor -%}
+  </div>
+</div></section>
+{% schema %}
+{ "name": "Seznam kolekcí" }
+{% endschema %}

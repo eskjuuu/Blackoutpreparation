@@ -1,0 +1,20 @@
+{%- assign product = section.settings.product -%}
+<section class="section" id="{{ section.settings.anchor | default: section.id }}"><div class="wrap">
+  {%- if product == blank -%}
+    <div class="setup-note">Vyber produkt v nastavení sekce (Online obchod → Přizpůsobit → sekce „Produkt“).</div>
+  {%- else -%}
+    {% render 'product-block', product: product, full: false, flip: section.settings.flip, sid: section.id %}
+  {%- endif -%}
+</div></section>
+
+{% schema %}
+{
+  "name": "Produkt",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Produkt" },
+    { "type": "checkbox", "id": "flip", "label": "Galerie vpravo", "default": false },
+    { "type": "text", "id": "anchor", "label": "Kotva (např. vybava)" }
+  ],
+  "presets": [{ "name": "Produkt" }]
+}
+{% endschema %}

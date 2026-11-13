@@ -1,0 +1,14 @@
+<section class="section"><div class="wrap">
+  <p class="label">Sklad</p>
+  <h1 class="h2">{{ collection.title }}</h1>
+  {%- if collection.description != blank -%}<div class="lead rte">{{ collection.description }}</div>{%- endif -%}
+  {%- paginate collection.products by 24 -%}
+    <div class="grid">
+      {%- for product in collection.products -%}{% render 'product-card', product: product %}{%- else -%}<p class="lead">Tady zatím nic není.</p>{%- endfor -%}
+    </div>
+    {%- if paginate.pages > 1 -%}<nav class="pagination" aria-label="Stránky">{{ paginate | default_pagination }}</nav>{%- endif -%}
+  {%- endpaginate -%}
+</div></section>
+{% schema %}
+{ "name": "Kolekce" }
+{% endschema %}

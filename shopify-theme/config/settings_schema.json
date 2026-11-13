@@ -1,0 +1,20 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Pripraveni Postapo",
+    "theme_version": "1.0.0",
+    "theme_author": "Pripraveni",
+    "theme_documentation_url": "https://help.shopify.com",
+    "theme_support_url": "https://help.shopify.com"
+  },
+  {
+    "name": "Obecné",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicona"
+      }
+    ]
+  }
+]

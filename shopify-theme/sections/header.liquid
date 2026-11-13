@@ -1,0 +1,36 @@
+<div class="tape"><div class="wrap tape__in">
+  {%- for i in (1..3) -%}
+    {%- assign key = 'tape_' | append: i -%}
+    {%- if section.settings[key] != blank -%}<span>{{ section.settings[key] }}</span>{%- endif -%}
+  {%- endfor -%}
+</div></div>
+
+<header class="head"><div class="wrap head__in">
+  <a class="logo" href="{{ routes.root_url }}">
+    {%- if section.settings.logo -%}
+      {{ section.settings.logo | image_url: width: 300 | image_tag: alt: shop.name, height: 40 }}
+    {%- else -%}
+      {% render 'logo-mark' %}{{ shop.name }}
+    {%- endif -%}
+  </a>
+  <button class="menu-toggle" type="button" data-menu-toggle aria-controls="site-nav" aria-expanded="false">Menu</button>
+  <nav class="nav" id="site-nav" aria-label="Hlavní menu">
+    {%- for link in section.settings.menu.links -%}
+      <a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}</a>
+    {%- endfor -%}
+  </nav>
+  <a class="cartlink" href="{{ routes.cart_url }}">Výbava <b>{{ cart.item_count }}</b></a>
+</div></header>
+
+{% schema %}
+{
+  "name": "Hlavička",
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logo (volitelné)" },
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" },
+    { "type": "text", "id": "tape_1", "label": "Páska – text 1", "default": "Doručení obvykle 2–7 pracovních dnů" },
+    { "type": "text", "id": "tape_2", "label": "Páska – text 2", "default": "Doprava zdarma od 1 500 Kč" },
+    { "type": "text", "id": "tape_3", "label": "Páska – text 3", "default": "14 dní na vrácení bez udání důvodu" }
+  ]
+}
+{% endschema %}

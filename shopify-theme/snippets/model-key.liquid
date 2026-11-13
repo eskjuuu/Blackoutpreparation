@@ -1,0 +1,2 @@
+{%- comment -%} Vrátí klíč 3D modelu podle štítku produktu: 3d-batoh → backpack, 3d-pumpa → pump {%- endcomment -%}
+{%- if product.tags contains '3d-batoh' -%}backpack{%- elsif product.tags contains '3d-pumpa' -%}pump{%- endif -%}

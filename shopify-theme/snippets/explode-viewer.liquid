@@ -1,0 +1,11 @@
+{%- comment -%}
+  Rozložený 3D pohled. Použití: {% render 'explode-viewer', model: 'backpack' %}  (backpack | pump)
+{%- endcomment -%}
+<div class="explode-host" data-viewer="{{ model }}"></div>
+<script type="module">
+  import { mountViewer } from '{{ 'viewer.js' | asset_url }}';
+  document.querySelectorAll('[data-viewer]:not([data-mounted])').forEach((el) => {
+    el.dataset.mounted = '1';
+    mountViewer(el, el.dataset.viewer);
+  });
+</script>

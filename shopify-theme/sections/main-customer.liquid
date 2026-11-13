@@ -1,0 +1,52 @@
+<section class="section"><div class="wrap" style="max-width:640px">
+  {%- case template.name -%}
+  {%- when 'customers/login' -%}
+    <h1 class="h2">Přihlášení</h1>
+    {%- form 'customer_login', class: 'buy' -%}
+      {{ form.errors | default_errors }}
+      <div class="field"><label for="le">E‑mail</label><input id="le" type="email" name="customer[email]" autocomplete="email"></div>
+      <div class="field"><label for="lp">Heslo</label><input id="lp" type="password" name="customer[password]" autocomplete="current-password"></div>
+      <button class="btn btn--rust" type="submit">Přihlásit</button>
+      <a href="{{ routes.account_register_url }}">Založit účet</a>
+    {%- endform -%}
+  {%- when 'customers/register' -%}
+    <h1 class="h2">Nový účet</h1>
+    {%- form 'create_customer', class: 'buy' -%}
+      {{ form.errors | default_errors }}
+      <div class="field"><label for="rf">Jméno</label><input id="rf" type="text" name="customer[first_name]" autocomplete="given-name"></div>
+      <div class="field"><label for="re">E‑mail</label><input id="re" type="email" name="customer[email]" autocomplete="email"></div>
+      <div class="field"><label for="rp">Heslo</label><input id="rp" type="password" name="customer[password]" autocomplete="new-password"></div>
+      <button class="btn btn--rust" type="submit">Vytvořit účet</button>
+    {%- endform -%}
+  {%- when 'customers/account' -%}
+    <h1 class="h2">Účet</h1>
+    <p class="lead">{{ customer.name }} · <a href="{{ routes.account_logout_url }}">Odhlásit</a></p>
+    {%- for order in customer.orders -%}<p><a href="{{ order.customer_url }}">{{ order.name }}</a> · {{ order.created_at | date: '%d. %m. %Y' }} · {{ order.total_price | money }}</p>{%- else -%}<p class="small">Zatím žádné objednávky.</p>{%- endfor -%}
+  {%- when 'customers/order' -%}
+    <h1 class="h2">Objednávka {{ order.name }}</h1>
+    {%- for li in order.line_items -%}<p>{{ li.title }} × {{ li.quantity }} · {{ li.final_line_price | money }}</p>{%- endfor -%}
+    <p class="price">{{ order.total_price | money }}</p>
+  {%- when 'customers/reset_password' -%}
+    <h1 class="h2">Nové heslo</h1>
+    {%- form 'reset_customer_password', class: 'buy' -%}
+      {{ form.errors | default_errors }}
+      <div class="field"><label for="np">Heslo</label><input id="np" type="password" name="customer[password]" autocomplete="new-password"></div>
+      <div class="field"><label for="nc">Heslo znovu</label><input id="nc" type="password" name="customer[password_confirmation]" autocomplete="new-password"></div>
+      <button class="btn btn--rust" type="submit">Uložit</button>
+    {%- endform -%}
+  {%- when 'customers/activate_account' -%}
+    <h1 class="h2">Aktivace účtu</h1>
+    {%- form 'activate_customer_password', class: 'buy' -%}
+      {{ form.errors | default_errors }}
+      <div class="field"><label for="ap">Heslo</label><input id="ap" type="password" name="customer[password]" autocomplete="new-password"></div>
+      <div class="field"><label for="ac">Heslo znovu</label><input id="ac" type="password" name="customer[password_confirmation]" autocomplete="new-password"></div>
+      <button class="btn btn--rust" type="submit">Aktivovat</button>
+    {%- endform -%}
+  {%- else -%}
+    <h1 class="h2">Účet</h1>
+    <p class="lead"><a href="{{ routes.account_url }}">Pokračovat do účtu</a></p>
+  {%- endcase -%}
+</div></section>
+{% schema %}
+{ "name": "Zákaznický účet" }
+{% endschema %}
