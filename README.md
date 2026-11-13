@@ -79,6 +79,17 @@ a objednávky odesílají automaticky:
 | **Zendrop** | rychlé zpracování, vlastní branding |
 
 Hledejte: *„expandable cat backpack carrier“* a *„battery fuel transfer pump 2 pack“*.
+
+**Kde začít hledat:**
+- Batoh: [AliExpress – expandable pet carrier](https://www.aliexpress.com/w/wholesale-expandable-pet-carrier.html),
+  [AliExpress – cat backpack](https://pl.aliexpress.com/w/wholesale-cat-backpack.html).
+  V CJdropshipping (po přihlášení) hledejte „expandable cat backpack“ a filtrujte sklad **CZ/DE/PL**.
+- Pumpa: [AliExpress – battery fuel pump](https://www.aliexpress.com/w/wholesale-battery-fuel-pump.html),
+  [AliExpress – battery powered fuel pump](https://www.aliexpress.com/w/wholesale-battery-powered-fuel-pump.html).
+  Varianta z Temu (OEIN) se pod značkou na trhu nedohledala. Hledejte stejný typ: **2× baterie D, pistolová tryska, adaptér na kanystr, sada 2 ks**.
+
+**Na co se dívat u dodavatele:** sklad v EU (doručení 3–7 dní místo 2–3 týdnů), hodnocení 4,5+, počet objednávek,
+skutečné fotky v recenzích a u pumpy výslovně uvedený benzín (některé jsou jen na naftu a vodu).
 Před spuštěním si **objednejte vzorek** obou produktů a ověřte rozměry, nosnost a kvalitu.
 Parametry v `js/config.js` jsou typické hodnoty, je potřeba je zkontrolovat.
 

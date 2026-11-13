@@ -26,6 +26,20 @@ $('#year').textContent = new Date().getFullYear();
 // ---- 3D prohlížeče
 $$('[data-viewer]').forEach((el) => mountViewer(el, el.dataset.viewer));
 
+// ---- galerie produktu: fotky / 3D
+$$('.media').forEach((m) => {
+  const img = $('.media__img', m);
+  const v3d = $('.media__3d', m);
+  const thumbs = $$('[data-show]', m);
+  thumbs.forEach((t) => t.addEventListener('click', () => {
+    thumbs.forEach((x) => x.setAttribute('aria-pressed', String(x === t)));
+    const is3d = t.dataset.show === '3d';
+    img.hidden = is3d;
+    v3d.hidden = !is3d;
+    if (!is3d) { img.src = t.dataset.show; img.alt = t.dataset.alt; }
+  }));
+});
+
 // ---- košík
 const drawer = $('#cart');
 const icons = {
@@ -95,34 +109,3 @@ $('#checkout').addEventListener('click', () => {
   modal.hidden = false;
 });
 
-// ---- hero: město, ve kterém zhasínají okna
-const city = $('#city');
-if (city) {
-  const W = 1200, H = 260;
-  let svg = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMax slice" aria-hidden="true">`;
-  let x = 0, seed = 7;
-  const rnd = () => ((seed = (seed * 9301 + 49297) % 233280) / 233280);
-  const wins = [];
-  while (x < W) {
-    const bw = 50 + rnd() * 70, bh = 70 + rnd() * 170;
-    svg += `<rect class="bld" x="${x}" y="${H - bh}" width="${bw}" height="${bh}"/>`;
-    for (let wy = H - bh + 12; wy < H - 14; wy += 16) {
-      for (let wx = x + 8; wx < x + bw - 12; wx += 13) {
-        if (rnd() > 0.45) wins.push(`<rect class="win" x="${wx.toFixed(1)}" y="${wy.toFixed(1)}" width="6" height="8"/>`);
-      }
-    }
-    x += bw + 4 + rnd() * 10;
-  }
-  svg += `<g>${wins.join('')}</g></svg>`;
-  city.innerHTML = svg;
-  const lit = $$('.win', city);
-  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const order = lit.map((el, i) => [el, rnd() + (i % 7) * 0.02]).sort((a, b) => a[1] - b[1]).map((a) => a[0]);
-    const keep = Math.round(order.length * 0.06);
-    let i = 0;
-    const t = setInterval(() => {
-      for (let k = 0; k < 14 && i < order.length - keep; k++, i++) order[i].classList.add('off');
-      if (i >= order.length - keep) clearInterval(t);
-    }, 70);
-  }
-}

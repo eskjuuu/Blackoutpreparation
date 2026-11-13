@@ -45,12 +45,13 @@
 <main id="top">
 
 <section class="hero">
+  <img class="hero__bg" src="img/bundle.jpg" alt="" width="1500" height="1125" fetchpriority="high">
   <div class="wrap hero__in">
     <p class="eyebrow"><span class="dot"></span>Výbava pro krizové situace</p>
-    <h1>Když zhasnou světla,<br><em>budete mít plán.</em></h1>
-    <p class="lead">Výpadek proudu, evakuace, zavřené čerpací stanice. Nevíme, co přijde. Víme ale, co se vyplatí mít doma dřív, než to budete potřebovat. Vybíráme jen věci, které dávají smysl v krizi i v obyčejném týdnu.</p>
+    <h1 class="flicker">Proud vypadne.<br><em>Plán zůstane.</em></h1>
+    <p class="lead">Výpadek proudu, evakuace, zavřené pumpy. Až to přijde, nebude čas nic shánět. Výbava, která funguje bez elektřiny a bez paniky.</p>
     <div class="hero__cta">
-      <a class="btn btn--primary" href="#batoh">Prohlédnout ve 3D</a>
+      <a class="btn btn--primary" href="#batoh">Vybavit se teď <span aria-hidden="true">→</span></a>
       <a class="btn btn--ghost" href="#balicek">Balíček za <span data-price="bundle"></span></a>
     </div>
     <dl class="facts">
@@ -59,12 +60,16 @@
       <div><dt>2×</dt><dd>větší prostor v batohu po rozepnutí bočnice</dd></div>
     </dl>
   </div>
-  <div class="city" id="city"></div>
 </section>
+
+<div class="ticker" aria-hidden="true"><div class="ticker__track">
+  <span>Výpadek proudu</span><span>Evakuace</span><span>Zavřené pumpy</span><span>72 hodin bez pomoci</span><span>Bez zásuvky</span><span>Ruce volné</span>
+  <span>Výpadek proudu</span><span>Evakuace</span><span>Zavřené pumpy</span><span>72 hodin bez pomoci</span><span>Bez zásuvky</span><span>Ruce volné</span>
+</div></div>
 
 <section class="scen" aria-labelledby="scen-h">
   <div class="wrap">
-    <h2 id="scen-h" class="h2">Tři situace, na které se dá připravit</h2>
+    <h2 id="scen-h" class="h2">Tři situace.<br><em>Jedna příprava.</em></h2>
     <div class="scen__grid">
       <article class="card">
         <p class="tag tag--amber">Blackout</p>
@@ -87,14 +92,22 @@
 
 <section class="product" id="batoh" aria-labelledby="batoh-h">
   <div class="wrap product__in">
-    <div class="product__viewer" data-viewer="backpack"></div>
+    <div class="media">
+      <img class="media__img" src="img/backpack.jpg" alt="Evakuační batoh pro kočku za soumraku" width="1500" height="1125" loading="lazy">
+      <div class="media__3d" data-viewer="backpack" hidden></div>
+      <div class="media__thumbs" role="group" aria-label="Zobrazení produktu">
+        <button type="button" class="thumb" data-show="img/backpack.jpg" data-alt="Evakuační batoh pro kočku za soumraku" aria-pressed="true"><img src="img/backpack-thumb.jpg" alt="" width="240" height="180" loading="lazy"></button>
+        <button type="button" class="thumb" data-show="img/backpack_open.jpg" data-alt="Batoh s vysunutým rozšiřitelným dílem" aria-pressed="false"><img src="img/backpack_open-thumb.jpg" alt="" width="240" height="180" loading="lazy"></button>
+        <button type="button" class="thumb thumb--3d" data-show="3d" aria-pressed="false"><b>3D</b><span>Rozložit a vyzkoušet</span></button>
+      </div>
+    </div>
     <div class="product__info">
       <p class="eyebrow">Evakuace se zvířetem</p>
       <h2 id="batoh-h" class="h2">Evakuační batoh pro kočku</h2>
       <p class="lead">Rozšiřitelný, větraný ze čtyř stran a s volnýma rukama. Kočka v něm v klidu přečká cestu autem, chůzi pěšky i noc v úkrytu.</p>
       <div class="buy">
         <p class="price" data-price="backpack"></p>
-        <button class="btn btn--primary" type="button" data-add="backpack">Do košíku</button>
+        <button class="btn btn--primary" type="button" data-add="backpack">Do košíku <span aria-hidden="true">→</span></button>
       </div>
       <ul class="feat">
         <li><b>Rozšiřitelný díl.</b> Po rozepnutí bočnice vznikne dvojnásobný prostor, kočka si lehne a natáhne se.</li>
@@ -111,14 +124,22 @@
 
 <section class="product product--alt" id="pumpa" aria-labelledby="pumpa-h">
   <div class="wrap product__in">
-    <div class="product__viewer" data-viewer="pump"></div>
+    <div class="media">
+      <img class="media__img" src="img/pump.jpg" alt="Bateriová pumpa nasazená na kanystru" width="1500" height="1125" loading="lazy">
+      <div class="media__3d" data-viewer="pump" hidden></div>
+      <div class="media__thumbs" role="group" aria-label="Zobrazení produktu">
+        <button type="button" class="thumb" data-show="img/pump.jpg" data-alt="Bateriová pumpa nasazená na kanystru" aria-pressed="true"><img src="img/pump-thumb.jpg" alt="" width="240" height="180" loading="lazy"></button>
+        <button type="button" class="thumb" data-show="img/pump_close.jpg" data-alt="Detail rukojeti s bateriemi a spínačem" aria-pressed="false"><img src="img/pump_close-thumb.jpg" alt="" width="240" height="180" loading="lazy"></button>
+        <button type="button" class="thumb thumb--3d" data-show="3d" aria-pressed="false"><b>3D</b><span>Rozložit a vyzkoušet</span></button>
+      </div>
+    </div>
     <div class="product__info">
       <p class="eyebrow">Palivo bez elektřiny</p>
       <h2 id="pumpa-h" class="h2">Bateriová pumpa na palivo<br><span class="muted">sada 2 ks</span></h2>
       <p class="lead">Přečerpá benzín, naftu i petrolej z kanystru do nádrže auta, agregátu nebo kamen. Stačí dvě baterie a jedno tlačítko.</p>
       <div class="buy">
         <p class="price" data-price="pump"></p>
-        <button class="btn btn--primary" type="button" data-add="pump">Do košíku</button>
+        <button class="btn btn--primary" type="button" data-add="pump">Do košíku <span aria-hidden="true">→</span></button>
       </div>
       <ul class="feat">
         <li><b>Až 6 l za minutu</b> (údaj výrobce). Dvacetilitrový kanystr přečerpáte zhruba za 3–4 minuty.</li>
@@ -135,7 +156,8 @@
 
 <section class="bundle" id="balicek" aria-labelledby="bal-h">
   <div class="wrap bundle__in">
-    <div>
+    <img class="bundle__img" src="img/bundle.jpg" alt="Batoh pro kočku a pumpa na kanystru vedle sebe" width="1500" height="1125" loading="lazy">
+    <div class="bundle__text">
       <p class="eyebrow">Ušetříte <span data-bundle-save></span></p>
       <h2 id="bal-h" class="h2">Balíček Připraveni</h2>
       <p class="lead">Evakuační batoh pro kočku a sada dvou palivových pump. Obvyklá cena při samostatném nákupu je <span data-bundle-sum></span>.</p>
