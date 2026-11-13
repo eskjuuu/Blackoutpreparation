@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3D model produktu</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/style.css">
+<style>body { padding: 12px; } .viewer__parts { display: none; }</style>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<!-- Použití: viewer.html?model=backpack  nebo  viewer.html?model=pump  (vkládá se jako iframe do Shopify) -->
+<div id="v"></div>
+<script type="module">
+  import { mountViewer } from './js/viewer.js';
+  const key = new URLSearchParams(location.search).get('model') === 'pump' ? 'pump' : 'backpack';
+  mountViewer(document.getElementById('v'), key);
+</script>
+</body>
+</html>

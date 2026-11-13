@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Připraveni – výbava na blackout</title>
+<meta name="description" content="Výbava pro výpadek proudu, evakuaci a krizové situace: evakuační batoh pro kočku a bateriová pumpa na palivo. Prohlédněte si je ve 3D.">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+
+<div class="strip"><div class="wrap strip__in">
+  <span>Doručení obvykle 2–7 pracovních dnů</span>
+  <span>Doprava zdarma od <b data-free-from></b></span>
+  <span>14 dní na vrácení bez udání důvodu</span>
+</div></div>
+
+<header class="head"><div class="wrap head__in">
+  <a class="logo" href="#top" aria-label="Připraveni – úvod">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14"/><path d="M16 6v10l6 4"/></svg>
+    PŘIPRAVENI
+  </a>
+  <nav class="nav" aria-label="Hlavní menu">
+    <a href="#batoh">Batoh pro kočku</a>
+    <a href="#pumpa">Pumpa na palivo</a>
+    <a href="#balicek">Balíček</a>
+    <a href="#otazky">Otázky</a>
+  </nav>
+  <button class="cartbtn" type="button" data-open-cart aria-label="Otevřít košík">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 11h11l2-8H6.2"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/></svg>
+    <span>Košík</span><b data-cart-count hidden>0</b>
+  </button>
+</div></header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap hero__in">
+    <p class="eyebrow"><span class="dot"></span>Výbava pro krizové situace</p>
+    <h1>Když zhasnou světla,<br><em>budete mít plán.</em></h1>
+    <p class="lead">Výpadek proudu, evakuace, zavřené čerpací stanice. Nevíme, co přijde. Víme ale, co se vyplatí mít doma dřív, než to budete potřebovat. Vybíráme jen věci, které dávají smysl v krizi i v obyčejném týdnu.</p>
+    <div class="hero__cta">
+      <a class="btn btn--primary" href="#batoh">Prohlédnout ve 3D</a>
+      <a class="btn btn--ghost" href="#balicek">Balíček za <span data-price="bundle"></span></a>
+    </div>
+    <dl class="facts">
+      <div><dt>72 h</dt><dd>tolik doporučují krizoví odborníci zvládnout bez pomoci zvenčí</dd></div>
+      <div><dt>2× D</dt><dd>baterie pumpě stačí, zásuvku nepotřebuje</dd></div>
+      <div><dt>2×</dt><dd>větší prostor v batohu po rozepnutí bočnice</dd></div>
+    </dl>
+  </div>
+  <div class="city" id="city"></div>
+</section>
+
+<section class="scen" aria-labelledby="scen-h">
+  <div class="wrap">
+    <h2 id="scen-h" class="h2">Tři situace, na které se dá připravit</h2>
+    <div class="scen__grid">
+      <article class="card">
+        <p class="tag tag--amber">Blackout</p>
+        <h3>Čerpací stanice bez proudu nečerpají</h3>
+        <p>Palivo, které máte v kanystru, je v tu chvíli jediné, co máte. Pumpa ho dostane do auta, agregátu nebo naftových kamen bez nasávání pusou a bez rozlití.</p>
+      </article>
+      <article class="card">
+        <p class="tag tag--orange">Evakuace</p>
+        <h3>Na odchod z domu máte minuty</h3>
+        <p>Vyděšená kočka v náručí uteče. V pevném větraném batohu je v bezpečí a vy máte obě ruce volné na děti, doklady a zavazadla.</p>
+      </article>
+      <article class="card">
+        <p class="tag tag--steel">Delší krize</p>
+        <h3>Rozhoduje, co máte připravené doma</h3>
+        <p>Když se situace zhorší, zboží rychle mizí z regálů a dodací lhůty se natahují. Pořiďte si výbavu teď, dokud se doručuje během pár dnů.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="product" id="batoh" aria-labelledby="batoh-h">
+  <div class="wrap product__in">
+    <div class="product__viewer" data-viewer="backpack"></div>
+    <div class="product__info">
+      <p class="eyebrow">Evakuace se zvířetem</p>
+      <h2 id="batoh-h" class="h2">Evakuační batoh pro kočku</h2>
+      <p class="lead">Rozšiřitelný, větraný ze čtyř stran a s volnýma rukama. Kočka v něm v klidu přečká cestu autem, chůzi pěšky i noc v úkrytu.</p>
+      <div class="buy">
+        <p class="price" data-price="backpack"></p>
+        <button class="btn btn--primary" type="button" data-add="backpack">Do košíku</button>
+      </div>
+      <ul class="feat">
+        <li><b>Rozšiřitelný díl.</b> Po rozepnutí bočnice vznikne dvojnásobný prostor, kočka si lehne a natáhne se.</li>
+        <li><b>Síťovaná okna ze 4 stran.</b> Kočka dýchá a vidí ven, což ji uklidňuje.</li>
+        <li><b>Výztužný rám a pevné dno.</b> Batoh drží tvar a nepromáčkne se.</li>
+        <li><b>Vnitřní vodítko.</b> Připnete k obojku, kočka při otevření nevyskočí.</li>
+        <li><b>Reflexní pruh.</b> Viditelnost ve tmě, když nesvítí lampy.</li>
+        <li><b>Kapsy.</b> Očkovací průkaz, pamlsky a voda pro kočku na jednom místě.</li>
+      </ul>
+      <dl class="specs" data-specs="backpack"></dl>
+    </div>
+  </div>
+</section>
+
+<section class="product product--alt" id="pumpa" aria-labelledby="pumpa-h">
+  <div class="wrap product__in">
+    <div class="product__viewer" data-viewer="pump"></div>
+    <div class="product__info">
+      <p class="eyebrow">Palivo bez elektřiny</p>
+      <h2 id="pumpa-h" class="h2">Bateriová pumpa na palivo<br><span class="muted">sada 2 ks</span></h2>
+      <p class="lead">Přečerpá benzín, naftu i petrolej z kanystru do nádrže auta, agregátu nebo kamen. Stačí dvě baterie a jedno tlačítko.</p>
+      <div class="buy">
+        <p class="price" data-price="pump"></p>
+        <button class="btn btn--primary" type="button" data-add="pump">Do košíku</button>
+      </div>
+      <ul class="feat">
+        <li><b>Až 6 l za minutu</b> (údaj výrobce). Dvacetilitrový kanystr přečerpáte zhruba za 3–4 minuty.</li>
+        <li><b>Na 2 baterie typu D.</b> Funguje bez zásuvky, tedy i při blackoutu. Baterie nejsou součástí balení.</li>
+        <li><b>Tryska s regulací průtoku.</b> Dávkujete přesně a nepřelijete.</li>
+        <li><b>Sada 2 kusů.</b> Jednu do auta, druhou k agregátu nebo do sklepa.</li>
+        <li><b>Adaptér na hrdla kanystrů.</b> Pumpa stojí svisle a netřeba ji držet.</li>
+      </ul>
+      <dl class="specs" data-specs="pump"></dl>
+      <p class="note"><b>Bezpečnost:</b> přečerpávejte venku, mimo otevřený oheň a jiskření. Moderní auta mají v hrdle nádrže pojistku proti odčerpání, pumpa je určená hlavně k přečerpávání z kanystrů a sudů.</p>
+    </div>
+  </div>
+</section>
+
+<section class="bundle" id="balicek" aria-labelledby="bal-h">
+  <div class="wrap bundle__in">
+    <div>
+      <p class="eyebrow">Ušetříte <span data-bundle-save></span></p>
+      <h2 id="bal-h" class="h2">Balíček Připraveni</h2>
+      <p class="lead">Evakuační batoh pro kočku a sada dvou palivových pump. Obvyklá cena při samostatném nákupu je <span data-bundle-sum></span>.</p>
+    </div>
+    <div class="bundle__buy">
+      <p class="price price--big" data-price="bundle"></p>
+      <button class="btn btn--primary btn--wide" type="button" data-add="bundle">Přidat balíček do košíku</button>
+      <p class="small">Doprava zdarma. Platba kartou, Apple Pay nebo Google Pay v zabezpečené pokladně.</p>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="otazky" aria-labelledby="faq-h">
+  <div class="wrap faq__in">
+    <h2 id="faq-h" class="h2">Časté otázky</h2>
+    <div class="faq__list">
+      <details><summary>Kdy mi zboží dorazí?</summary><p>Obvykle do 2–7 pracovních dnů. Přesný odhad uvidíte v pokladně. O odeslání vás informujeme e‑mailem se sledovacím číslem.</p></details>
+      <details><summary>Jsou baterie součástí pumpy?</summary><p>Ne. Pumpa potřebuje 2 baterie typu D (velké mono články). Doporučujeme mít doma i náhradní sadu.</p></details>
+      <details><summary>Jak velká kočka se do batohu vejde?</summary><p>Batoh je určený pro kočky a malé psy, orientační nosnost najdete v parametrech u produktu. Po rozepnutí bočnice má zvíře dvojnásobný prostor.</p></details>
+      <details><summary>Dá se pumpou odčerpat palivo z nádrže auta?</summary><p>U starších aut často ano. Většina novějších aut má v hrdle nádrže pojistku proti odčerpání, přes kterou trubice neprojde. Pumpa je určená hlavně k přečerpávání z kanystrů, sudů a nádob.</p></details>
+      <details><summary>Můžu zboží vrátit?</summary><p>Ano. Do 14 dnů od převzetí můžete od nákupu odstoupit bez udání důvodu. Podrobnosti najdete v obchodních podmínkách.</p></details>
+      <details><summary>Proč si to pořídit teď?</summary><p>V klidné době vyberete v klidu a zboží dorazí za pár dní. V krizi se stejné věci vyprodají a dodávky se zpozdí. Batoh navíc využijete i u veterináře a pumpu při každém tankování agregátu nebo sekačky.</p></details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot"><div class="wrap foot__in">
+  <p class="logo logo--small">PŘIPRAVENI</p>
+  <nav class="foot__links" aria-label="Právní informace">
+    <a href="#">Obchodní podmínky</a>
+    <a href="#">Reklamační řád</a>
+    <a href="#">Ochrana osobních údajů</a>
+    <a href="#">Doprava a platba</a>
+  </nav>
+  <p class="small" id="company"></p>
+  <p class="small">© <span id="year"></span> Připraveni. 3D modely jsou ilustrační, konkrétní provedení se může mírně lišit.</p>
+</div></footer>
+
+<div class="drawer" id="cart" hidden>
+  <aside class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="cart-h">
+    <div class="drawer__head">
+      <h2 id="cart-h">Košík</h2>
+      <button class="iconbtn" id="cart-close" type="button" aria-label="Zavřít košík">✕</button>
+    </div>
+    <div class="ship">
+      <p id="ship-text"></p>
+      <div class="ship__track"><div class="ship__bar" id="ship-bar"></div></div>
+    </div>
+    <ul class="lines" id="cart-lines"></ul>
+    <div class="drawer__foot">
+      <p class="subtotal"><span>Mezisoučet</span><b id="cart-subtotal"></b></p>
+      <button class="btn btn--primary btn--wide" id="checkout" type="button">Pokračovat k pokladně</button>
+      <p class="small">Doprava a DPH se dopočítají v pokladně.</p>
+    </div>
+  </aside>
+</div>
+
+<div class="modal" id="modal" hidden>
+  <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="modal-h">
+    <h2 id="modal-h">Pokladna zatím není připojená</h2>
+    <p id="modal-text"></p>
+    <button class="btn btn--primary" id="modal-close" type="button">Rozumím</button>
+  </div>
+</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
